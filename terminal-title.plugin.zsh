@@ -10,21 +10,26 @@ function set-term-title() {
     fi
 }
 
+function get-git-toplevel-basename-or-pwd(){
+    which git &> /dev/null && git rev-parse --is-inside-work-tree &> /dev/null && \
+      basename $(git rev-parse --show-toplevel) || echo ${(V%):-"%~"}
+}
+
 # When a command is running, display it in the terminal title.
 function set-term-title-preexec() {
     if (( P9K_SSH )); then
-        set-term-title ${(V%):-"%n@%m: %~ ❯ "}$1
+        set-term-title ${(V%):-"%n@%m: $(get-git-toplevel-basename-or-pwd) ❯ "}$1
     else
-        set-term-title ${(V%):-"%~ ❯ "}$1
+        set-term-title ${(V%):-"$(get-git-toplevel-basename-or-pwd) ❯ "}$1
     fi
 }
 
 # When no command is running, display the current directory in the terminal title.
 function set-term-title-precmd() {
     if (( P9K_SSH )); then
-        set-term-title ${(V%):-"%n@%m: %~"}
+        set-term-title ${(V%):-"%n@%m: $(get-git-toplevel-basename-or-pwd)"}
     else
-        set-term-title ${(V%):-"%~"}
+        set-term-title ${(V%):-"$(get-git-toplevel-basename-or-pwd)"}
     fi
 }
 

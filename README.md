@@ -4,6 +4,8 @@ Terminal title setting plugin for zsh with no options
 
 ## Attribution
 
+Fork of [AnimiVulpis/zsh-terminal-title](https://github.com/AnimiVulpis/zsh-terminal-title)
+
 The plugin is based on a zsh script posted by
 [romkatv](https://github.com/romkatv) in a comment
 [here](https://github.com/romkatv/powerlevel10k/issues/1092#issuecomment-723039693)
@@ -19,7 +21,7 @@ Put these lines into your `.zshrc` (after you sourced `zinit`):
 - Recommended way (with turbo mode; using the newer `for` syntax):
 
       zinit wait lucid nocd atload"!set-term-title-precmd" for \
-          AnimiVulpis/zsh-terminal-title
+          raulfpl/zsh-terminal-title
 
   - _`wait` to activate turbo mode_
   - _`lucid` to prevent "Loaded" message from appearing_
@@ -29,7 +31,7 @@ Put these lines into your `.zshrc` (after you sourced `zinit`):
 - If you don't want to use turbo mode you can
 
       zinit light-mode for \
-          AnimiVulpis/zsh-terminal-title
+          raulfpl/zsh-terminal-title
 
   - _`light-mode` to load the plugin without investigating_
 
